@@ -1,0 +1,94 @@
+C51 COMPILER V9.56.0.0   MAIN                                                              12/18/2022 21:15:27 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files\keil51\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Code) DEBUG OBJECT
+                    -EXTEND PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include "headfile.h"
+   3          
+   4          void All_Init();
+   5          void Task_Handler();
+   6          void Task_Auto();
+   7          void Task_Manual();
+   8          
+   9          void main()
+  10          {
+  11   1        All_Init();
+  12   1        while(1)
+  13   1        {
+  14   2          Task_Handler();
+  15   2        }
+  16   1      }
+  17          
+  18          void All_Init()
+  19          {
+  20   1        filter_type = 2;
+  21   1        Disp_Init();
+  22   1        Timer0_Init();
+  23   1      }
+  24          
+  25          void Task_Handler()
+  26          {
+  27   1        Mode_Read();
+  28   1        if(mode == 1)//自动模式
+  29   1        {
+  30   2          Task_Auto();
+  31   2        }
+  32   1        else//手动模式
+  33   1        {
+  34   2          Task_Manual();
+  35   2        }
+  36   1      }
+  37          
+  38          void Task_Auto()
+  39          {
+  40   1        if(AdGet_Flag == 1)
+  41   1        {
+  42   2          TR0 = 0;
+  43   2          ET0 = 0;
+  44   2          AdGet_Flag = 0;
+  45   2          Read_Adc();
+  46   2          Filter_Choose(filter_type);
+  47   2          DA_Out();
+  48   2          Disp_Dig(channel, data_filtered);
+  49   2          ET0 = 1;
+  50   2          TR0 = 1;
+  51   2        }
+  52   1      }
+  53          
+  54          void Task_Manual()
+C51 COMPILER V9.56.0.0   MAIN                                                              12/18/2022 21:15:27 PAGE 2   
+
+  55          {
+  56   1        if(AdGet_Flag == 1)
+  57   1        {
+  58   2          TR0 = 0;
+  59   2          ET0 = 0;
+  60   2          Change_Channel();
+  61   2          Read_Adc();
+  62   2          Filter_Choose(filter_type);
+  63   2          DA_Out();
+  64   2          Disp_Dig(channel, data_filtered);
+  65   2          ET0 = 1;
+  66   2          TR0 = 1;
+  67   2        }
+  68   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     95    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

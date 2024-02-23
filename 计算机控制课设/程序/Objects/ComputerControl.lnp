@@ -1,0 +1,11 @@
+".\Objects\STARTUP.obj",
+".\Objects\Disp.obj",
+".\Objects\ADC.obj",
+".\Objects\Timer.obj",
+".\Objects\DAC.obj",
+".\Objects\main.obj",
+".\Objects\Key.obj",
+".\Objects\Filter.obj",
+".\Objects\Sort.obj" 
+TO ".\Objects\ComputerControl" 
+PRINT(".\Listings\ComputerControl.m51") RAMSIZE(256) 

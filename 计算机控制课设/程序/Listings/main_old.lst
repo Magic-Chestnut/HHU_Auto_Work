@@ -1,0 +1,136 @@
+C51 COMPILER V9.56.0.0   MAIN_OLD                                                          12/17/2022 14:56:40 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE MAIN_OLD
+OBJECT MODULE PLACED IN .\Objects\main_old.obj
+COMPILER INVOKED BY: D:\Program Files\keil51\C51\BIN\C51.EXE main_old.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Code) DEBUG OB
+                    -JECTEXTEND PRINT(.\Listings\main_old.lst) TABS(2) OBJECT(.\Objects\main_old.obj)
+
+line level    source
+
+   1          //#include "reg52.h"
+   2          //#include "headfile.h"
+   3          
+   4          //uint ad_channel=0xbf00;
+   5          //#define commond XBYTE[0x7F00]  //控制位地址
+   6          //#define PA XBYTE[0x7F01]     //PA地址，控制数码管
+   7          //#define PB XBYTE[0x7F02]     //PB地址
+   8          //#define PC XBYTE[0X7F03]
+   9          //#define dac_channel XBYTE[0XF500]  //DAC寄存器
+  10          //sbit EOC=P3^0;
+  11          //#define AD_IN XBYTE[ad_channel] //AD转化通道选择
+  12          //uchar miao=0; //设置秒
+  13          //uchar time0_cnt=0; //用于定时器统计进入几次
+  14          //void init();  //定时器初始化
+  15          //void smgshow();//数码管显示
+  16          //void adc();
+  17          //uchar  adc1=0;  //adc转化的结果
+  18          //void dac();
+  19          //sbit  mode=P2^2; //定义自动模式和手动模式
+  20          //#define num 12
+  21          
+  22          //uchar exe(uchar i)
+  23          //{
+  24          //  uint adc2=0;
+  25          //  switch(i)
+  26          //  {
+  27          //    case 0: adc();break;//不滤波
+  28          //  }
+  29          //  return adc1;
+  30          //}
+  31          //void main()
+  32          //{
+  33          
+  34          //  init();
+  35          ////  commond=0x0d;//
+  36          //  while(1)
+  37          //  {
+  38          //    if(mode==1)
+  39          //    {
+  40          //      adc1=exe(0);  //ad转化，滤波
+  41          //     smgshow();
+  42          //     dac();
+  43          //      EA=1;
+  44          //    }
+  45          //    else
+  46          //    {
+  47          //      EA=0;
+  48          ////      miao=P1&0X0F;
+  49          ////      ad_channel=(ad_channel&0xfff0)+miao;
+  50          //      adc1=exe(0);
+  51          //      smgshow();
+  52          //      dac();
+  53          //    }
+  54          
+C51 COMPILER V9.56.0.0   MAIN_OLD                                                          12/17/2022 14:56:40 PAGE 2   
+
+  55          //  }
+  56          //}
+  57          
+  58          //void dac()
+  59          //{
+  60          //  PA=adc1;   
+  61          //  dac_channel=0;   //da转化开始的标志
+  62          //  PA= adc1%10+(adc1/10%10)*16;
+  63          //  
+  64          //}
+  65          //void adc()
+  66          //{
+  67          //  AD_IN=0;
+  68          //  while(EOC==0);
+  69          //  adc1=AD_IN;
+  70          //}
+  71          //void smgshow()
+  72          //{
+  73          //  //PA= adc1%10+(adc1/10%10)*16;
+  74          //  adc1 = adc1*10/51;
+  75          //  PA= adc1%10+(adc1/10)*16;
+  76          //  PC=miao;
+  77          //}
+  78          //初始化定时器
+  79          //void init(void)
+  80          //{
+  81          //  TMOD=0x11;   //定时器模式
+  82          //  TH0=(65536-50000)/256;   //初始值,50ms
+  83          //  TL0=(65536-50000)%256;
+  84          //  EA=1; //中断总开关
+  85          //  ET0=1;  //定时器中断开启
+  86          //  TR0=1;  //定时器开启
+  87          //}
+  88          
+  89          //定时器0执行函数
+  90          //void T0_time()interrupt 1
+  91          //{
+  92          //  TH0=(65536-50000)/256;  //初始值,50ms
+  93          //  TL0=(65536-50000)%256;
+  94          //  
+  95          //  time0_cnt++;   //定时器进入一次
+  96          //  
+  97          //  if(time0_cnt>=20)  //50ms*20 = 1S，所以1S进入一次
+  98          //  {
+  99          //    time0_cnt=0;//重新计数
+ 100          //    miao++; //秒加1
+ 101          //    ad_channel++;
+ 102          //    if(miao>=8)
+ 103          //    {
+ 104          //      miao=0;  //清除秒
+ 105          //      ad_channel=0xbf00;
+ 106          //    }
+ 107          //  }
+ 108          //}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.56.0.0   MAIN_OLD                                                          12/17/2022 14:56:40 PAGE 3   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

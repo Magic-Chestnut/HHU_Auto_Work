@@ -1,0 +1,1 @@
+"Code\Filter.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Code) DEBUG OBJECTEXTEND PRINT(.\Listings\Filter.lst) TABS (2) OBJECT(.\Objects\Filter.obj)

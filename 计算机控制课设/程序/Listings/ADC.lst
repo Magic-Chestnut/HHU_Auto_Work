@@ -1,0 +1,49 @@
+C51 COMPILER V9.56.0.0   ADC                                                               12/18/2022 17:33:07 PAGE 1   
+
+
+C51 COMPILER V9.56.0.0, COMPILATION OF MODULE ADC
+OBJECT MODULE PLACED IN .\Objects\ADC.obj
+COMPILER INVOKED BY: D:\Program Files\keil51\C51\BIN\C51.EXE Code\ADC.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\Code) DEBUG OB
+                    -JECTEXTEND PRINT(.\Listings\ADC.lst) TABS(2) OBJECT(.\Objects\ADC.obj)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          #include "headfile.h"
+   3          
+   4          #define AD_IN XBYTE[ad_channel] //AD转化通道选择
+   5          
+   6          sbit EOC=P3^0;
+   7          
+   8          uint ad_channel=0xbf00;
+   9          
+  10          uchar  adc_value=0;  //adc转化的结果
+  11          
+  12          void Read_Adc()
+  13          {
+  14   1        uchar adc_temp;
+  15   1        AD_IN = 0;
+  16   1        while(EOC==0);
+  17   1        adc_temp = AD_IN;
+  18   1        adc_value = adc_temp*10/51;
+  19   1      }
+  20          
+  21          void Change_Channel()
+  22          {
+  23   1        channel=P1&0X0F;
+  24   1        ad_channel=(ad_channel&0xfff0)+channel;
+  25   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     57    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

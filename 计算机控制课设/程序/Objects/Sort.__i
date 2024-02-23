@@ -1,0 +1,1 @@
+"Code\Sort.c" OPTIMIZE (8,SPEED) BROWSE INCDIR(.\Code) DEBUG OBJECTEXTEND PRINT(.\Listings\Sort.lst) TABS (2) OBJECT(.\Objects\Sort.obj)
